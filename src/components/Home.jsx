@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -26,12 +27,21 @@ const Home = () => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`/goit-react-hw-05-movies/movies/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
       </ul>
     </div>
   );
+};
+
+Home.PropTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Home;

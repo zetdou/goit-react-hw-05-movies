@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 const Movies = () => {
   const [query, setQuery] = useState("");
@@ -25,7 +26,7 @@ const Movies = () => {
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(ev) => setQuery(ev.target.value)}
           placeholder="Search for a movie"
         />
         <button type="submit">Search</button>
@@ -33,12 +34,21 @@ const Movies = () => {
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`/goit-react-hw-05-movies/movies/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
       </ul>
     </div>
   );
+};
+
+Movies.PropTypes = {
+  movie: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Movies;
