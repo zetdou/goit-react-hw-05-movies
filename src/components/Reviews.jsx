@@ -1,35 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import styles from '../styles/Reviews.module.css';
 
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    const fetchMovieReviews = async () => {
+    const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=b29a82c40924d31dffca7bf941f12611`,
+          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=b29a82c40924d31dffca7bf941f12611`
         );
         setReviews(response.data.results);
       } catch (error) {
-        console.error("Error fetching movie reviews", error);
+        console.error('Error fetching reviews:', error);
       }
     };
 
-    fetchMovieReviews();
+    fetchReviews();
   }, [movieId]);
 
   return (
-    <div>
+    <div className="container">
       <h2>Reviews</h2>
-      <ul>
+      <ul className={styles.reviewList}>
         {reviews.map((review) => (
-          <li key={review.id}>
-            <h3>{review.author}</h3>
-            <p>{review.content}</p>
+          <li key={review.id} className={styles.reviewItem}>
+            <div className={styles.reviewAuthor}>{review.author}</div>
+            <div className={styles.reviewContent}>{review.content}</div>
           </li>
         ))}
       </ul>
@@ -37,14 +38,8 @@ const Reviews = () => {
   );
 };
 
-Reviews.PropTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      author: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+Reviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
 };
 
 export default Reviews;

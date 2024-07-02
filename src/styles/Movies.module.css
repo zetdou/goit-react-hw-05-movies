@@ -1,0 +1,47 @@
+.searchContainer {
+    margin-bottom: 20px;
+  }
+  
+  .inputField {
+    padding: 10px;
+    font-size: 1rem;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .searchButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .searchButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .movieList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .movieItem {
+    flex: 1 1 calc(25% - 10px);
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movieItem a {
+    color: #007bff;
+  }
+  
+  .movieItem a:hover {
+    text-decoration: underline;
+  }

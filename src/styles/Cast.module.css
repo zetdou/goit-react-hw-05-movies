@@ -1,0 +1,29 @@
+.castList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .castItem {
+    flex: 1 1 calc(25% - 10px);
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profileImage {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .actorName {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .characterName {
+    color: #666;
+  }
